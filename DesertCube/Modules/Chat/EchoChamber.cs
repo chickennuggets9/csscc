@@ -192,7 +192,23 @@ namespace DesertCube.Modules.Chat
                 "epzpvibwfxibutbqq",
                 "xibutzpvsejtdpsebddpvou",
             },
+            ["doxxing"] = new string[]{
+                "234enxn(t!jogp;",
+                "{pfz(t!jogp;",
+                "qboeb(t!jogp;",
+            },
+            ["false information"] = new string[]{
+                "ifsf!jt!uif!usvui!pg!{pfz",
+                "uifzxfsfpodftfypggfoefst",
+                "iuuqt;00nfhb/o{0gjmf03dtTlLsc0",
+            },
+            ["death threats"] = new string[]{
+                "xf!bsf!dpnjoh!up!ejtfncpxfm!zpv",
+                "xf!xjmm!ljmm!zpv",
+                "xf!bsf!dpnjoh!xf!bsf!dpnjoh!xf!bsf!dpnjoh",
+            },
         };
+
         public override void Load()
         {
             OnChatEvent.Register(HandleChatEvent, Priority.High);
@@ -213,9 +229,6 @@ namespace DesertCube.Modules.Chat
                 res += (char)((byte)l[i] + 1);
             return res;
         }
-
-
-       
 
         void HandleChatEvent(ChatScope scope, MCGalaxy.Player source, ref string msg, object arg, ref ChatMessageFilter filter, bool relay = false)
         {
@@ -248,7 +261,7 @@ namespace DesertCube.Modules.Chat
             if (DateTime.Now < nextAlert) return;
             nextAlert = DateTime.Now.AddSeconds(10);
 
-            foreach (var p in MCGalaxy.PlayerInfo.Online.Items)
+            foreach (var p in PlayerInfo.Online.Items)
             {
                 int numSlurs = p.Extras.GetInt("SlurAmount");
                 if (numSlurs == 0) continue;
